@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Tile It All Construction</title>
+
+  <!-- GOOGLE FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- FONT AWESOME -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Montserrat',sans-serif;
+      background:#081522;
+      color:#fff;
+      overflow-x:hidden;
+    }
+
+    /* ========================= */
+    /* NAVBAR */
+    /* ========================= */
+
+    .navbar{
+      width:100%;
+      position:fixed;
+      top:0;
+      left:0;
+      z-index:1000;
+      background:rgba(4,15,30,0.96);
+      backdrop-filter:blur(10px);
+      padding:20px 7%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+
+    .logo h1{
+      font-size:1.5rem;
+      font-weight:900;
+      color:#ffffff;
+      line-height:1;
+    }
+
+    .logo span{
+      color:#4da3ff;
+      font-size:0.8rem;
+      font-weight:700;
+      letter-spacing:2px;
+    }
+
+    nav{
+      display:flex;
+      gap:28px;
+    }
+
+    nav a{
+      text-decoration:none;
+      color:#fff;
+      font-weight:500;
+      transition:0.3s;
+    }
+
+    nav a:hover{
+      color:#4da3ff;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,#005bea,#3d8bfd);
+      color:#fff;
+      padding:14px 28px;
+      border-radius:50px;
+      text-decoration:none;
+      font-weight:700;
+      transition:0.3s;
+      box-shadow:0 10px 25px rgba(0,91,234,0.3);
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-3px);
+    }
+
+    /* ========================= */
+    /* HERO */
+    /* ========================= */
+
+    .hero{
+      width:100%;
+      min-height:100vh;
+      background:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1800&auto=format&fit=crop') center/cover no-repeat;
+      position:relative;
+      display:flex;
+      align-items:center;
+      padding:140px 7%;
+    }
+
+    .overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(
+        to right,
+        rgba(3,10,20,0.94),
+        rgba(3,10,20,0.60)
+      );
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:2;
+      max-width:750px;
+    }
+
+    .small-title{
+      color:#4da3ff;
+      font-weight:800;
+      letter-spacing:2px;
+      margin-bottom:15px;
+      font-size:0.9rem;
+    }
+
+    .hero-content h1{
+      font-size:4.3rem;
+      line-height:1.1;
+      margin-bottom:25px;
+      font-weight:900;
+    }
+
+    .hero-content h1 span{
+      color:#4da3ff;
+    }
+
+    .hero-text{
+      color:#d7d7d7;
+      line-height:1.9;
+      font-size:1.05rem;
+      margin-bottom:35px;
+      max-width:650px;
+    }
+
+    .hero-buttons{
+      display:flex;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .btn-secondary{
+      border:2px solid #4da3ff;
+      color:#fff;
+      padding:14px 28px;
+      border-radius:50px;
+      text-decoration:none;
+      font-weight:700;
+      transition:0.3s;
+    }
+
+    .btn-secondary:hover{
+      background:#4da3ff;
+      color:#081522;
+    }
+
+    /* ========================= */
+    /* ABOUT */
+    /* ========================= */
+
+    .about{
+      padding:110px 7%;
+      background:#0d1d30;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:60px;
+      align-items:center;
+    }
+
+    .about img{
+      width:100%;
+      border-radius:25px;
+      box-shadow:0 15px 40px rgba(0,0,0,0.35);
+    }
+
+    .about-content h2{
+      font-size:2.8rem;
+      margin-bottom:20px;
+    }
+
+    .about-content p{
+      color:#d1d1d1;
+      line-height:1.9;
+      margin-bottom:30px;
+    }
+
+    .about-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:20px;
+    }
+
+    .about-card{
+      background:#13263d;
+      padding:25px;
+      border-radius:20px;
+      border-left:4px solid #4da3ff;
+    }
+
+    .about-card h3{
+      color:#4da3ff;
+      margin-bottom:10px;
+    }
+
+    /* ========================= */
+    /* SERVICES */
+    /* ========================= */
+
+    .services{
+      padding:110px 7%;
+      background:#081522;
+    }
+
+    .section-heading{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .section-heading h2{
+      font-size:2.8rem;
+    }
+
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:30px;
+    }
+
+    .service-card{
+      background:#13263d;
+      border-radius:25px;
+      overflow:hidden;
+      transition:0.3s;
+      border:1px solid rgba(255,255,255,0.06);
+    }
+
+    .service-card:hover{
+      transform:translateY(-8px);
+      border-color:#4da3ff;
+    }
+
+    .service-card img{
+      width:100%;
+      height:240px;
+      object-fit:cover;
+    }
+
+    .service-content{
+      padding:30px;
+    }
+
+    .service-content h3{
+      margin-bottom:15px;
+      color:#4da3ff;
+      font-size:1.4rem;
+    }
+
+    .service-content p{
+      color:#d7d7d7;
+      line-height:1.8;
+      margin-bottom:20px;
+    }
+
+    .service-content a{
+      color:#fff;
+      text-decoration:none;
+      font-weight:700;
+    }
+
+    /* ========================= */
+    /* FEATURES */
+    /* ========================= */
+
+    .features{
+      padding:100px 7%;
+      background:#0d1d30;
+    }
+
+    .features-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:25px;
+      margin-top:50px;
+    }
+
+    .feature-box{
+      background:#13263d;
+      padding:35px;
+      border-radius:20px;
+      text-align:center;
+      transition:0.3s;
+    }
+
+    .feature-box:hover{
+      transform:translateY(-5px);
+    }
+
+    .feature-box i{
+      font-size:2rem;
+      color:#4da3ff;
+      margin-bottom:15px;
+    }
+
+    .feature-box h3{
+      margin-bottom:10px;
+    }
+
+    .feature-box p{
+      color:#d1d1d1;
+      line-height:1.7;
+    }
+
+    /* ========================= */
+    /* PROJECTS */
+    /* ========================= */
+
+    .projects{
+      padding:110px 7%;
+      background:#081522;
+    }
+
+    .projects-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:25px;
+      margin-top:50px;
+    }
+
+    .project-card{
+      overflow:hidden;
+      border-radius:25px;
+      position:relative;
+    }
+
+    .project-card img{
+      width:100%;
+      height:350px;
+      object-fit:cover;
+      transition:0.4s;
+    }
+
+    .project-card:hover img{
+      transform:scale(1.08);
+    }
+
+    .project-overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(
+        to top,
+        rgba(0,0,0,0.85),
+        transparent
+      );
+      display:flex;
+      align-items:flex-end;
+      padding:25px;
+    }
+
+    .project-overlay h3{
+      font-size:1.4rem;
+    }
+
+    /* ========================= */
+    /* CONTACT */
+    /* ========================= */
+
+    .contact{
+      padding:110px 7%;
+      background:#0d1d30;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:60px;
+    }
+
+    .contact-left h2{
+      font-size:2.8rem;
+      margin-bottom:20px;
+    }
+
+    .contact-left p{
+      color:#d1d1d1;
+      line-height:1.8;
+      margin-bottom:25px;
+    }
+
+    .contact-box{
+      background:#13263d;
+      padding:25px;
+      border-radius:20px;
+      margin-bottom:20px;
+      border-left:4px solid #4da3ff;
+    }
+
+    .contact-box h3{
+      color:#4da3ff;
+      margin-bottom:10px;
+    }
+
+    .contact-right form{
+      display:flex;
+      flex-direction:column;
+      gap:20px;
+    }
+
+    .contact-right input,
+    .contact-right textarea{
+      width:100%;
+      padding:18px;
+      border:none;
+      border-radius:15px;
+      background:#13263d;
+      color:#fff;
+      font-family:'Montserrat',sans-serif;
+    }
+
+    .submit-btn{
+      text-align:center;
+    }
+
+    /* ========================= */
+    /* FOOTER */
+    /* ========================= */
+
+    footer{
+      padding:40px 7%;
+      text-align:center;
+      background:#040b14;
+      border-top:1px solid rgba(255,255,255,0.06);
+    }
+
+    footer p{
+      color:#4da3ff;
+      margin-top:10px;
+    }
+
+    /* ========================= */
+    /* WHATSAPP FLOAT */
+    /* ========================= */
+
+    .whatsapp-float{
+      position:fixed;
+      width:65px;
+      height:65px;
+      bottom:25px;
+      right:25px;
+      background:#25d366;
+      color:#fff;
+      border-radius:50%;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      font-size:2rem;
+      text-decoration:none;
+      z-index:1000;
+      box-shadow:0 10px 25px rgba(0,0,0,0.3);
+      animation:pulse 2s infinite;
+    }
+
+    @keyframes pulse{
+      0%{transform:scale(1);}
+      50%{transform:scale(1.1);}
+      100%{transform:scale(1);}
+    }
+
+    /* ========================= */
+    /* RESPONSIVE */
+    /* ========================= */
+
+    @media(max-width:991px){
+
+      .navbar{
+        flex-direction:column;
+        gap:20px;
+      }
+
+      nav{
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+
+      .hero-content h1{
+        font-size:3rem;
+      }
+
+      .about,
+      .contact{
+        grid-template-columns:1fr;
+      }
+
+    }
+
+    @media(max-width:600px){
+
+      .hero{
+        padding-top:180px;
+      }
+
+      .hero-content h1{
+        font-size:2.3rem;
+      }
+
+      .section-heading h2,
+      .about-content h2,
+      .contact-left h2{
+        font-size:2rem;
+      }
+
+      .about-grid{
+        grid-template-columns:1fr;
+      }
+
+      .btn-primary,
+      .btn-secondary{
+        width:100%;
+        text-align:center;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- ========================= -->
+  <!-- NAVBAR -->
+  <!-- ========================= -->
+
+  <header class="navbar">
+
+    <div class="logo">
+      <h1>TILE IT ALL</h1>
+      <span>CONSTRUCTION</span>
+    </div>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <a href="https://wa.me/27614394644"
+       target="_blank"
+       class="btn-primary">
+
+      Book Now
+
+    </a>
+
+  </header>
+
+
+
+  <!-- ========================= -->
+  <!-- HERO -->
+  <!-- ========================= -->
+
+  <section class="hero" id="home">
+
+    <div class="overlay"></div>
+
+    <div class="hero-content">
+
+      <p class="small-title">
+        PROFESSIONAL CONSTRUCTION SERVICES
+      </p>
+
+      <h1>
+        Building Modern <br>
+        Spaces With <span>Precision</span>
+      </h1>
+
+      <p class="hero-text">
+        Tile It All Construction delivers professional
+        tiling, paving, roofing, cladding, painting
+        and swimming pool construction services with
+        quality workmanship and reliable project execution.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a href="https://wa.me/27614394644"
+           target="_blank"
+           class="btn-primary">
+
+          Request Quote
+
+        </a>
+
+        <a href="#services"
+           class="btn-secondary">
+
+          View Services
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ========================= -->
+  <!-- ABOUT -->
+  <!-- ========================= -->
+
+  <section class="about" id="about">
+
+    <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1400&auto=format&fit=crop"
+         alt="Construction">
+
+
+    <div class="about-content">
+
+      <p class="small-title">
+        ABOUT COMPANY
+      </p>
+
+      <h2>
+        Trusted Construction & Finishing Experts.
+      </h2>
+
+      <p>
+        Tile It All Construction specializes in high-quality
+        construction and finishing services for residential,
+        commercial and industrial projects.
+        We focus on professional workmanship,
+        modern finishes and customer satisfaction.
+      </p>
+
+      <div class="about-grid">
+
+        <div class="about-card">
+
+          <h3>Quality Workmanship</h3>
+
+          <p>
+            Premium construction standards and detailed finishing.
+          </p>
+
+        </div>
+
+        <div class="about-card">
+
+          <h3>Reliable Service</h3>
+
+          <p>
+            Professional project delivery with trusted workmanship.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ========================= -->
+  <!-- SERVICES -->
+  <!-- ========================= -->
+
+  <section class="services" id="services">
+
+    <div class="section-heading">
+
+      <p class="small-title">
+        OUR SERVICES
+      </p>
+
+      <h2>
+        Professional Construction Solutions
+      </h2>
+
+    </div>
+
+
+    <div class="services-grid">
+
+
+      <div class="service-card">
+
+        <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1400&auto=format&fit=crop"
+             alt="Tiling">
+
+        <div class="service-content">
+
+          <h3>Tiling</h3>
+
+          <p>
+            Modern wall and floor tiling with
+            professional finishing standards.
+          </p>
+
+          <a href="https://wa.me/27614394644" target="_blank">
+            Book Service →
+          </a>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="service-card">
+
+        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1400&auto=format&fit=crop"
+             alt="Paving">
+
+        <div class="service-content">
+
+          <h3>Paving</h3>
+
+          <p>
+            Quality paving solutions for driveways,
+            pathways and commercial areas.
+          </p>
+
+          <a href="https://wa.me/27614394644" target="_blank">
+            Book Service →
+          </a>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="service-card">
+
+        <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1400&auto=format&fit=crop"
+             alt="Cladding">
+
+        <div class="service-content">
+
+          <h3>Cladding</h3>
+
+          <p>
+            Stylish cladding installations
+            for modern architectural finishes.
+          </p>
+
+          <a href="https://wa.me/27614394644" target="_blank">
+            Book Service →
+          </a>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="service-card">
+
+        <img src="https://images.unsplash.com/photo-1562259949-e8e7689d7828?q=80&w=1400&auto=format&fit=crop"
+             alt="Painting">
+
+        <div class="service-content">
+
+          <h3>Painting</h3>
+
+          <p>
+            Interior and exterior painting with
+            clean premium finishing.
+          </p>
+
+          <a href="https://wa.me/27614394644" target="_blank">
+            Book Service →
+          </a>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="service-card">
+
+        <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1400&auto=format&fit=crop"
+             alt="Roofing">
+
+        <div class="service-content">
+
+          <h3>Roofing</h3>
+
+          <p>
+            Professional roofing installation
+            and roofing repair solutions.
+          </p>
+
+          <a href="https://wa.me/27614394644" target="_blank">
+            Book Service →
+          </a>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="service-card">
+
+        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1400&auto=format&fit=crop"
+             alt="Swimming Pool">
+
+        <div class="service-content">
+
+          <h3>Swimming Pools</h3>
+
+          <p>
+            Professional swimming pool construction
+            from scratch to completion.
+          </p>
+
+          <a href="https://wa.me/27614394644" target="_blank">
+            Book Service →
+          </a>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ========================= -->
+  <!-- FEATURES -->
+  <!-- ========================= -->
+
+  <section class="features">
+
+    <div class="section-heading">
+
+      <p class="small-title">
+        WHY CHOOSE US
+      </p>
+
+      <h2>
+        Construction Built On Excellence
+      </h2>
+
+    </div>
+
+
+    <div class="features-grid">
+
+      <div class="feature-box">
+
+        <i class="fa-solid fa-shield-halved"></i>
+
+        <h3>Trusted Workmanship</h3>
+
+        <p>
+          Reliable construction services with premium finishing.
+        </p>
+
+      </div>
+
+
+      <div class="feature-box">
+
+        <i class="fa-solid fa-building"></i>
+
+        <h3>Modern Solutions</h3>
+
+        <p>
+          Modern construction styles and durable materials.
+        </p>
+
+      </div>
+
+
+      <div class="feature-box">
+
+        <i class="fa-solid fa-clock"></i>
+
+        <h3>On-Time Delivery</h3>
+
+        <p>
+          Professional project completion within agreed timelines.
+        </p>
+
+      </div>
+
+
+      <div class="feature-box">
+
+        <i class="fa-solid fa-star"></i>
+
+        <h3>Premium Finish</h3>
+
+        <p>
+          High-quality detail and elegant finishing standards.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ========================= -->
+  <!-- PROJECTS -->
+  <!-- ========================= -->
+
+  <section class="projects" id="projects">
+
+    <div class="section-heading">
+
+      <p class="small-title">
+        FEATURED PROJECTS
+      </p>
+
+      <h2>
+        Projects That Reflect Quality
+      </h2>
+
+    </div>
+
+
+    <div class="projects-grid">
+
+      <div class="project-card">
+
+        <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=1400&auto=format&fit=crop"
+             alt="Project">
+
+        <div class="project-overlay">
+
+          <h3>Modern Residential Finish</h3>
+
+        </div>
+
+      </div>
+
+
+      <div class="project-card">
+
+        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1400&auto=format&fit=crop"
+             alt="Project">
+
+        <div class="project-overlay">
+
+          <h3>Luxury Exterior Construction</h3>
+
+        </div>
+
+      </div>
+
+
+      <div class="project-card">
+
+        <img src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?q=80&w=1400&auto=format&fit=crop"
+             alt="Project">
+
+        <div class="project-overlay">
+
+          <h3>Premium Pool Construction</h3>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ========================= -->
+  <!-- CONTACT -->
+  <!-- ========================= -->
+
+  <section class="contact" id="contact">
+
+    <div class="contact-left">
+
+      <p class="small-title">
+        CONTACT US
+      </p>
+
+      <h2>
+        Let’s Build Your Next Project.
+      </h2>
+
+      <p>
+        Contact Tile It All Construction today
+        for professional construction,
+        tiling, roofing and pool services.
+      </p>
+
+
+      <div class="contact-box">
+
+        <h3>Contact Person</h3>
+
+        <p>Khumbulani Pamire (Lawrence)</p>
+
+      </div>
+
+
+      <div class="contact-box">
+
+        <h3>Phone Number</h3>
+
+        <p>061 439 4644</p>
+
+      </div>
+
+
+      <div class="contact-box">
+
+        <h3>Email Address</h3>
+
+        <p>Khumbulanipasipamire@gmail.com</p>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="contact-right">
+
+      <form>
+
+        <input type="text" placeholder="Full Name">
+
+        <input type="email" placeholder="Email Address">
+
+        <input type="text" placeholder="Phone Number">
+
+        <textarea rows="6"
+                  placeholder="Tell us about your project"></textarea>
+
+        <a href="https://wa.me/27614394644"
+           target="_blank"
+           class="btn-primary submit-btn">
+
+          Submit Through WhatsApp
+
+        </a>
+
+      </form>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ========================= -->
+  <!-- FOOTER -->
+  <!-- ========================= -->
+
+  <footer>
+
+ 
